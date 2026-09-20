@@ -1,0 +1,14 @@
+/* NovaHub Custom Styles */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+button,
+a {
+    transition: all 0.3s ease;
+}
