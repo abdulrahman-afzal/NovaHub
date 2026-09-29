@@ -1,0 +1,711 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaHub - Lab 04</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Flowbite CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="bg-gray-100">
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="bg-slate-900 border-b border-slate-700">
+
+        <div class="max-w-screen-xl mx-auto px-4 py-4
+                    flex items-center justify-between">
+
+            <a href="index.html"
+               class="text-2xl font-bold text-white">
+
+                Nova<span class="text-blue-500">Hub</span>
+
+            </a>
+
+
+            <div class="flex items-center gap-6">
+
+                <a href="index.html"
+                   class="text-gray-300 hover:text-white">
+                    Home
+                </a>
+
+                <a href="about.html"
+                   class="text-gray-300 hover:text-white">
+                    About
+                </a>
+
+                <a href="contact.html"
+                   class="text-gray-300 hover:text-white">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="bg-slate-950 py-14">
+
+        <div class="max-w-screen-xl mx-auto px-4 text-center">
+
+            <p class="text-blue-400 font-semibold uppercase">
+                Lab 04
+            </p>
+
+            <h1 class="text-4xl md:text-5xl
+                       font-extrabold text-white mt-3">
+
+                NovaHub Business Solutions
+
+            </h1>
+
+            <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+
+                Manage business solutions using JavaScript
+                Array of Objects and CRUD operations.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ADD FORM ================= -->
+
+    <section class="py-12">
+
+        <div class="max-w-4xl mx-auto px-4">
+
+            <div class="bg-white rounded-2xl shadow p-6">
+
+                <h2 class="text-2xl font-bold text-gray-900">
+                    Add New Business Solution
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+                    Enter the details below to add a new solution.
+                </p>
+
+
+                <form id="solutionForm"
+                      class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+
+
+                    <div>
+
+                        <label class="block mb-2 font-medium">
+                            Solution Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="solutionName"
+                            required
+                            minlength="3"
+                            placeholder="e.g. Customer Support"
+                            class="w-full p-3 border border-gray-300
+                                   rounded-lg focus:ring-2
+                                   focus:ring-blue-500"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block mb-2 font-medium">
+                            Category
+                        </label>
+
+                        <select
+                            id="solutionCategory"
+                            required
+                            class="w-full p-3 border border-gray-300
+                                   rounded-lg">
+
+                            <option value="">Select Category</option>
+                            <option value="Web">Web</option>
+                            <option value="Analytics">Analytics</option>
+                            <option value="Team">Team</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block mb-2 font-medium">
+                            Priority
+                        </label>
+
+                        <select
+                            id="solutionPriority"
+                            required
+                            class="w-full p-3 border border-gray-300
+                                   rounded-lg">
+
+                            <option value="">Select Priority</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block mb-2 font-medium">
+                            Status
+                        </label>
+
+                        <select
+                            id="solutionStatus"
+                            required
+                            class="w-full p-3 border border-gray-300
+                                   rounded-lg">
+
+                            <option value="">Select Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="md:col-span-2">
+
+                        <label class="block mb-2 font-medium">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="solutionDescription"
+                            required
+                            minlength="10"
+                            rows="4"
+                            placeholder="Describe the business solution..."
+                            class="w-full p-3 border border-gray-300
+                                   rounded-lg focus:ring-2
+                                   focus:ring-blue-500"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="md:col-span-2">
+
+                        <button
+                            type="submit"
+                            class="w-full bg-blue-600
+                                   hover:bg-blue-700
+                                   text-white font-semibold
+                                   py-3 rounded-lg">
+
+                            + Add Solution
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SEARCH + FILTER ================= -->
+
+    <section class="bg-slate-100 py-10">
+
+        <div class="max-w-screen-xl mx-auto px-4">
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-5">
+                Search & Filter Solutions
+            </h2>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by name, category or description..."
+                class="w-full p-4 border border-gray-300
+                       rounded-xl bg-white"
+            >
+
+
+            <div class="flex flex-wrap gap-3 mt-5">
+
+                <button
+                    class="filter-btn active-filter
+                           bg-gray-900 text-white
+                           px-5 py-2 rounded-lg"
+                    data-filter="All">
+
+                    All
+
+                </button>
+
+
+                <button
+                    class="filter-btn bg-blue-600 text-white
+                           px-5 py-2 rounded-lg"
+                    data-filter="Web">
+
+                    Web
+
+                </button>
+
+
+                <button
+                    class="filter-btn bg-purple-600 text-white
+                           px-5 py-2 rounded-lg"
+                    data-filter="Analytics">
+
+                    Analytics
+
+                </button>
+
+
+                <button
+                    class="filter-btn bg-green-600 text-white
+                           px-5 py-2 rounded-lg"
+                    data-filter="Team">
+
+                    Team
+
+                </button>
+
+
+                <button
+                    class="filter-btn bg-red-500 text-white
+                           px-5 py-2 rounded-lg"
+                    data-filter="High">
+
+                    High Priority
+
+                </button>
+
+
+                <button
+                    class="filter-btn bg-cyan-600 text-white
+                           px-5 py-2 rounded-lg"
+                    data-filter="Active">
+
+                    Active
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SOLUTIONS CARDS ================= -->
+
+    <section class="py-14">
+
+        <div class="max-w-screen-xl mx-auto px-4">
+
+            <div class="text-center mb-10">
+
+                <p class="text-blue-600 font-semibold uppercase">
+                    Array of Objects
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-900 mt-2">
+                    Business Solutions
+                </h2>
+
+            </div>
+
+
+            <div
+                id="solutionsContainer"
+                class="grid grid-cols-1 md:grid-cols-2
+                       lg:grid-cols-3 gap-7">
+            </div>
+
+
+            <div
+                id="emptyMessage"
+                class="hidden text-center
+                       bg-white rounded-xl p-10
+                       shadow">
+
+                <h3 class="text-xl font-bold text-gray-900">
+                    No Solutions Found
+                </h3>
+
+                <p class="text-gray-500 mt-2">
+                    Try another search or filter.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= IF ELSE ================= -->
+
+    <section class="bg-white py-14">
+
+        <div class="max-w-screen-xl mx-auto px-4">
+
+            <div class="text-center mb-8">
+
+                <p class="text-blue-600 font-semibold uppercase">
+                    JavaScript Conditions
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-900 mt-2">
+                    If-Else Logic Output
+                </h2>
+
+            </div>
+
+
+            <div
+                id="conditionOutput"
+                class="grid grid-cols-1 md:grid-cols-2
+                       gap-5">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOR LOOP ================= -->
+
+    <section class="bg-slate-100 py-14">
+
+        <div class="max-w-screen-xl mx-auto px-4">
+
+            <div class="text-center mb-8">
+
+                <p class="text-blue-600 font-semibold uppercase">
+                    For Loop
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-900 mt-2">
+                    Business Tools
+                </h2>
+
+            </div>
+
+
+            <div
+                id="forLoopOutput"
+                class="grid grid-cols-1 md:grid-cols-3
+                       gap-5">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WHILE LOOP ================= -->
+
+    <section class="bg-white py-14">
+
+        <div class="max-w-screen-xl mx-auto px-4">
+
+            <div class="text-center mb-8">
+
+                <p class="text-blue-600 font-semibold uppercase">
+                    While Loop
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-900 mt-2">
+                    Processed Solutions
+                </h2>
+
+            </div>
+
+
+            <div
+                id="whileLoopOutput"
+                class="grid grid-cols-1 md:grid-cols-3
+                       gap-5">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COMBINED LOGIC ================= -->
+
+    <section class="bg-slate-100 py-14">
+
+        <div class="max-w-screen-xl mx-auto px-4">
+
+            <div class="text-center mb-8">
+
+                <p class="text-blue-600 font-semibold uppercase">
+                    Loop + Conditions
+                </p>
+
+                <h2 class="text-3xl font-bold text-gray-900 mt-2">
+                    Categorized Solutions
+                </h2>
+
+            </div>
+
+
+            <div
+                id="combinedOutput"
+                class="grid grid-cols-1 md:grid-cols-3
+                       gap-5">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EDIT MODAL ================= -->
+
+    <div
+        id="editModal"
+        class="hidden fixed inset-0 z-50
+               bg-black bg-opacity-60
+               flex items-center justify-center
+               px-4">
+
+        <div class="bg-white rounded-2xl
+                    w-full max-w-lg
+                    p-6 shadow-2xl">
+
+            <div class="flex justify-between items-center mb-5">
+
+                <h2 class="text-2xl font-bold text-gray-900">
+                    Edit Solution
+                </h2>
+
+                <button
+                    id="closeModal"
+                    type="button"
+                    class="text-gray-500 text-2xl">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+
+            <form id="editForm" class="space-y-4">
+
+
+                <input
+                    type="hidden"
+                    id="editId"
+                >
+
+
+                <div>
+
+                    <label class="block mb-2 font-medium">
+                        Solution Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editName"
+                        required
+                        class="w-full p-3 border
+                               border-gray-300 rounded-lg"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label class="block mb-2 font-medium">
+                        Category
+                    </label>
+
+                    <select
+                        id="editCategory"
+                        required
+                        class="w-full p-3 border
+                               border-gray-300 rounded-lg">
+
+                        <option value="Web">Web</option>
+                        <option value="Analytics">Analytics</option>
+                        <option value="Team">Team</option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label class="block mb-2 font-medium">
+                        Priority
+                    </label>
+
+                    <select
+                        id="editPriority"
+                        required
+                        class="w-full p-3 border
+                               border-gray-300 rounded-lg">
+
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label class="block mb-2 font-medium">
+                        Status
+                    </label>
+
+                    <select
+                        id="editStatus"
+                        required
+                        class="w-full p-3 border
+                               border-gray-300 rounded-lg">
+
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label class="block mb-2 font-medium">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="editDescription"
+                        required
+                        rows="4"
+                        class="w-full p-3 border
+                               border-gray-300 rounded-lg">
+                    </textarea>
+
+                </div>
+
+
+                <div class="flex gap-3">
+
+                    <button
+                        type="submit"
+                        class="flex-1 bg-blue-600
+                               hover:bg-blue-700
+                               text-white py-3
+                               rounded-lg font-semibold">
+
+                        Update
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="cancelEdit"
+                        class="flex-1 bg-gray-200
+                               hover:bg-gray-300
+                               text-gray-800 py-3
+                               rounded-lg font-semibold">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="bg-black text-white py-8">
+
+        <div class="max-w-screen-xl mx-auto px-4 text-center">
+
+            <h2 class="text-2xl font-bold">
+                Nova<span class="text-blue-500">Hub</span>
+            </h2>
+
+            <p class="text-gray-500 mt-2">
+                Simple tools for modern businesses.
+            </p>
+
+            <p class="text-gray-600 mt-5 text-sm">
+                © 2026 NovaHub. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Flowbite JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+
+    <!-- Custom JS -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
+```
